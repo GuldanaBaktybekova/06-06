@@ -30,7 +30,7 @@ function Input() {
       </form>
       <button onClick={Add}>Add</button>
       <ul>
-        <li>
+     
         {items.map((it, index) => {
         return (
           <div key={it.id}>
@@ -38,7 +38,7 @@ function Input() {
           </div>
         );
       })}
-        </li>
+        
  
       </ul>
     </>
