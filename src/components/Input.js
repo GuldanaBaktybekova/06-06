@@ -14,12 +14,12 @@ function Input() {
     ]);
     setItem("");
   }
-  function Delete() {
-    setItems(!item.name);
-  }
-
+ 
+  const deleteItem = (index) => () =>
+    setItems((items) => items.filter((_, i) => i !== index));
   return (
     <>
+    
       <form onSubmit={Add}>
         <input
           name="item"
@@ -30,12 +30,16 @@ function Input() {
       </form>
       <button onClick={Add}>Add</button>
       <ul>
-        {items.map((item) => (
-          <li>
-            {item.name}
-            <button onClick={Delete}>-</button>
-          </li>
-        ))}
+        <li>
+        {items.map((it, index) => {
+        return (
+          <div key={it.id}>
+            {it.name} <button onClick={deleteItem(index)}>delete</button>
+          </div>
+        );
+      })}
+        </li>
+ 
       </ul>
     </>
   );
